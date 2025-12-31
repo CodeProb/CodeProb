@@ -270,20 +270,20 @@
             }
 
             const html = profiles.map(profile => {
-                // If profile picture is absolute, use it. If not, ignore it or assume relative? 
-                // For safety, let's assume external URLs or default.
-                const hasPic = profile.profilePicture && profile.profilePicture.startsWith('http');
-
-                const avatarContent = hasPic
-                    ? `<img src="${profile.profilePicture}" alt="${profile.username}" onerror="this.parentElement.innerHTML='${profile.displayName.charAt(0)}'">`
-                    : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-weight:bold;color:var(--text-primary);padding-top:2px;">${profile.displayName.charAt(0).toUpperCase()}</div>`;
+                // Simplified Design: Always use Initials in a Circle
+                // Generate initials from Display Name (e.g. "John Doe" -> "JD")
+                const initials = profile.displayName
+                    .split(' ')
+                    .map(n => n[0])
+                    .join('')
+                    .toUpperCase()
+                    .slice(0, 2);
 
                 return `
                     <a href="${prefix}profiles/${profile.username}/index.html" class="contributor-card" title="${profile.displayName}">
                         <div class="contributor-avatar">
-                            ${avatarContent}
+                            ${initials}
                         </div>
-                        <span class="contributor-name">${profile.displayName}</span>
                     </a>
                 `;
             }).join('');
