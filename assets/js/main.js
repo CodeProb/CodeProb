@@ -13,7 +13,11 @@
             this.setupNavigation();
             this.setupFilters();
             this.setupAccessibility();
-            this.setupProfileLinking();
+            this.setupProfileLinking(); // Existing call
+            // Initialize Community Dashboard
+            if (document.querySelector('.community-dashboard')) {
+                this.setupCommunityDashboard();
+            }
         },
 
         // Setup navigation functionality
@@ -232,6 +236,104 @@
             } catch (e) {
                 console.warn('Profile linking skipped:', e);
             }
+        },
+
+        // Setup Community Dashboard (Contributors & Activity)
+        setupCommunityDashboard: function () {
+            const contributorsList = document.getElementById('contributors-list');
+            const activityFeed = document.getElementById('activity-feed');
+
+            if (!contributorsList || !activityFeed) return;
+
+            // Determine path handling similar to profile linking
+            let prefix = './';
+            const mainScript = document.querySelector('script[src*="assets/js/main.js"]');
+            if (mainScript) {
+                const src = mainScript.getAttribute('src');
+                prefix = src.replace('assets/js/main.js', '');
+            }
+
+            // Fetch Data concurrently
+            Promise.all([
+                fetch(`${prefix}profiles.json`).then(r => r.json()).catch(() => ({ profiles: [] })),
+                fetch(`${prefix}contributor-config.json`).then(r => r.json()).catch(() => ({ content: {} }))
+            ]).then(([profilesData, contentData]) => {
+                this.renderContributors(profilesData.profiles, contributorsList, prefix);
+                this.renderActivity(contentData.content, activityFeed, prefix);
+            });
+        },
+
+        renderContributors: function (profiles, container, prefix) {
+            if (!profiles || profiles.length === 0) {
+                container.innerHTML = '<div class="empty-state">No contributors yet. Be the first!</div>';
+                return;
+            }
+
+            const html = profiles.map(profile => {
+                // If profile picture is absolute, use it. If not, ignore it or assume relative? 
+                // For safety, let's assume external URLs or default.
+                const hasPic = profile.profilePicture && profile.profilePicture.startsWith('http');
+
+                const avatarContent = hasPic
+                    ? `<img src="${profile.profilePicture}" alt="${profile.username}" onerror="this.parentElement.innerHTML='${profile.displayName.charAt(0)}'">`
+                    : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-weight:bold;color:var(--text-primary);padding-top:2px;">${profile.displayName.charAt(0).toUpperCase()}</div>`;
+
+                return `
+                    <a href="${prefix}profiles/${profile.username}/index.html" class="contributor-card" title="${profile.displayName}">
+                        <div class="contributor-avatar">
+                            ${avatarContent}
+                        </div>
+                        <span class="contributor-name">${profile.displayName}</span>
+                    </a>
+                `;
+            }).join('');
+
+            container.innerHTML = html;
+        },
+
+        renderActivity: function (content, container, prefix) {
+            const activities = [];
+
+            // Flatten content
+            if (content.problems) content.problems.forEach(i => activities.push({ ...i, type: 'Problem', typeIcon: '🧩', url: `${prefix}problems/${i.filename}` }));
+            if (content.concepts) content.concepts.forEach(i => activities.push({ ...i, type: 'Concept', typeIcon: '📚', url: `${prefix}concepts/${i.filename}` }));
+            if (content.articles) content.articles.forEach(i => activities.push({ ...i, type: 'Article', typeIcon: '✍️', url: `${prefix}articles/${i.filename}` }));
+
+            // Sort by Date (Desc)
+            activities.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+
+            // Take top 20
+            const recent = activities.slice(0, 20);
+
+            if (recent.length === 0) {
+                container.innerHTML = '<div class="empty-state">No recent activity.</div>';
+                return;
+            }
+
+            const html = recent.map(item => `
+                <div class="activity-card">
+                    <div class="activity-icon">${item.typeIcon}</div>
+                    <div class="activity-content">
+                        <div class="activity-header">
+                            <span class="activity-date" style="color:var(--text-muted); font-size: 0.8em; margin-right:5px;">${new Date(item.dateAdded).toLocaleDateString()}</span>
+                            ${item.type} by <strong>${item.author}</strong>
+                        </div>
+                        <a href="${item.url}" class="activity-title">${item.title}</a>
+                        <div class="activity-meta">
+                            ${this.getDescriptionPreview(item)}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            container.innerHTML = html;
+        },
+
+        getDescriptionPreview: function (item) {
+            if (item.difficulty) return `Difficulty: ${item.difficulty} • Topics: ${item.topics ? item.topics.join(', ') : 'General'}`;
+            if (item.category) return `Category: ${item.category} • Complexity: ${item.complexity}`;
+            if (item.tags) return `Tags: ${item.tags.join(', ')}`;
+            return '';
         }
     };
 

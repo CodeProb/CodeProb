@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodeProb - Programming Knowledge & Practice</title>
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
+
 <body>
     <header class="site-header">
         <div class="container">
@@ -25,24 +27,52 @@
         <div class="container">
             <section class="hero">
                 <h2>Programming Knowledge & Practice</h2>
-                <p>A community-driven platform combining focused coding problems with educational content in a minimal, wiki-style format.</p>
+                <p>A community-driven platform combining focused coding problems with educational content in a minimal,
+                    wiki-style format.</p>
             </section>
 
             <section class="content-categories">
                 <div class="category-grid">
                     <div class="category-card">
                         <h3><a href="problems/index.html">Programming Problems</a></h3>
-                        <p>Focused coding exercises similar to CodingBat. Practice your skills with problems ranging from basic to advanced.</p>
+                        <p>Focused coding exercises similar to CodingBat. Practice your skills with problems ranging
+                            from basic to advanced.</p>
                     </div>
-                    
+
                     <div class="category-card">
                         <h3><a href="concepts/index.html">Concepts & Learning</a></h3>
-                        <p>Educational content explaining programming concepts, patterns, and approaches in wiki-style format.</p>
+                        <p>Educational content explaining programming concepts, patterns, and approaches in wiki-style
+                            format.</p>
                     </div>
-                    
+
                     <div class="category-card">
                         <h3><a href="articles/index.html">Articles & Insights</a></h3>
-                        <p>Community-contributed articles, tutorials, and insights on programming topics and best practices.</p>
+                        <p>Community-contributed articles, tutorials, and insights on programming topics and best
+                            practices.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Community Dashboard -->
+            <section class="community-dashboard">
+                <div class="dashboard-header">
+                    <h3>Community Pulse</h3>
+                    <p>Live updates from our contributors</p>
+                </div>
+
+                <div class="contributors-section">
+                    <h4>Active Contributors</h4>
+                    <div class="contributors-scroll" id="contributors-list">
+                        <!-- Populated by JS -->
+                        <div class="loading-state">Loading contributors...</div>
+                    </div>
+                </div>
+
+                <div class="activity-section">
+                    <h4>Recent Activity</h4>
+                    <div class="activity-feed" id="activity-feed">
+                        <!-- Populated by JS -->
+                        <div class="loading-state">Loading activity...</div>
                     </div>
                 </div>
             </section>
@@ -52,7 +82,8 @@
                 <ul>
                     <li><strong>Learn:</strong> Browse problems and concepts to expand your knowledge</li>
                     <li><strong>Practice:</strong> Work through coding problems at your own pace</li>
-                    <li><strong>Contribute:</strong> Use the <a href="writer.html">writer interface</a> to create content</li>
+                    <li><strong>Contribute:</strong> Use the <a href="writer.html">writer interface</a> to create
+                        content</li>
                     <li><strong>Share:</strong> Submit your contributions via GitHub pull requests</li>
                 </ul>
             </section>
@@ -62,10 +93,12 @@
     <footer class="site-footer">
         <div class="container">
             <p>&copy; 2025 CodeProb. A static, community-driven platform hosted on GitHub Pages.</p>
-            <p><a href="docs/contributing.html">Contribution Guidelines</a> | <a href="https://github.com/codeprob/codeprob">GitHub Repository</a></p>
+            <p><a href="docs/contributing.html">Contribution Guidelines</a> | <a
+                    href="https://github.com/codeprob/codeprob">GitHub Repository</a></p>
         </div>
     </footer>
 
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>
