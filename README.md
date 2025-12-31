@@ -34,8 +34,10 @@ A static, community-driven programming knowledge and problem platform that combi
 ├── problems/               # Programming exercises
 ├── concepts/               # Educational content  
 ├── articles/               # Community articles
+├── profiles/               # User profile pages
 ├── writer.html             # Content creation interface
 ├── contributor-config.json # Content registry
+├── profiles.json           # Profiles registry
 ├── assets/                 # CSS, JS, templates
 └── docs/                   # Documentation
 ```
@@ -55,9 +57,9 @@ npm test
 
 ### Contributing Content
 1. Use the Writer interface (`writer.html`)
-2. Fill out the form for your content type
+2. Fill out the form for your content type (Problem, Concept, Article, or Profile)
 3. Export the HTML file
-4. Add the generated config entry to `contributor-config.json`
+4. Add the generated config entry to `contributor-config.json` (or `profiles.json` for profiles)
 5. Submit a pull request
 
 ## 📝 Content Types
@@ -79,6 +81,12 @@ npm test
 - Tagged for easy discovery
 - Include references and further reading
 - Filename format: `article-name.html`
+
+### User Profiles
+- Personal pages for contributors
+- Display bio, social links, and contribution history
+- Auto-linked from your articles and content
+- Filename format: `profiles/USERNAME/index.html`
 
 ## 🎨 Design Philosophy
 
