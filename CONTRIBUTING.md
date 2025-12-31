@@ -20,6 +20,21 @@ Welcome to CodeProb! We're excited to have you contribute to our community-drive
 3. **Update** `contributor-config.json` with the generated entry
 4. **Submit** a Pull Request
 
+### 4. Creating a Profile
+Contributors can create a professional profile page to showcase their work.
+
+1.  Open the **Writer Interface** (`writer.html`).
+2.  Switch to the **Profile** tab.
+3.  Fill in your details (Username, Display Name, Bio, etc.).
+4.  Click **Export HTML**. You will download an `index.html` file and see a JSON snippet.
+5.  **In your forked repository:**
+    *   Create a new folder in `profiles/` matching your chosen username (e.g., `profiles/john-doe/`).
+    *   Place the exported `index.html` inside that folder.
+    *   Open `profiles.json` (in the root directory) and add your JSON snippet to the `profiles` array.
+6.  Submit a Pull Request.
+
+Once merged, your profile will be at `https://codeprob.github.io/profiles/john-doe/` and your name on articles/problems will automatically link to it.
+
 ## 📝 Content Guidelines
 
 ### Problems (CodingBat Style)

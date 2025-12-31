@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,13 +11,13 @@
             max-width: 800px;
             margin: 0 auto;
         }
-        
+
         .content-type-tabs {
             display: flex;
             margin-bottom: 1em;
             border-bottom: 1px solid var(--border-color);
         }
-        
+
         .tab-button {
             padding: 0.5em 1em;
             background: var(--bg-secondary);
@@ -25,34 +26,34 @@
             cursor: pointer;
             font-family: var(--font-ui);
         }
-        
+
         .tab-button.active {
             background: var(--bg-primary);
             font-weight: bold;
         }
-        
+
         .tab-content {
             display: none;
             padding: 1em;
             border: 1px solid var(--border-color);
             background: var(--bg-primary);
         }
-        
+
         .tab-content.active {
             display: block;
         }
-        
+
         .form-group {
             margin-bottom: 1em;
         }
-        
+
         .form-group label {
             display: block;
             margin-bottom: 0.3em;
             font-weight: bold;
             color: var(--text-primary);
         }
-        
+
         .form-group input,
         .form-group select,
         .form-group textarea {
@@ -63,19 +64,19 @@
             color: var(--text-primary);
             font-family: inherit;
         }
-        
+
         .form-group textarea {
             min-height: 150px;
             font-family: var(--font-mono);
             resize: vertical;
         }
-        
+
         .form-actions {
             margin-top: 2em;
             padding-top: 1em;
             border-top: 1px solid var(--border-color);
         }
-        
+
         .btn {
             padding: 0.5em 1em;
             margin-right: 0.5em;
@@ -84,21 +85,21 @@
             cursor: pointer;
             font-family: var(--font-ui);
         }
-        
+
         .btn:hover {
             background: var(--bg-tertiary);
         }
-        
+
         .btn-primary {
             background: var(--link-color);
             color: white;
             border-color: var(--link-color);
         }
-        
+
         .btn-primary:hover {
             background: var(--link-hover);
         }
-        
+
         .preview-area {
             margin-top: 2em;
             padding: 1em;
@@ -106,24 +107,24 @@
             background: var(--bg-secondary);
             display: none;
         }
-        
+
         .preview-area.active {
             display: block;
         }
-        
+
         .help-text {
             font-size: 0.85em;
             color: var(--text-muted);
             margin-top: 0.3em;
         }
-        
+
         .tags-input {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5em;
             margin-top: 0.5em;
         }
-        
+
         .tag {
             background: var(--bg-tertiary);
             padding: 0.2em 0.5em;
@@ -132,6 +133,7 @@
         }
     </style>
 </head>
+
 <body>
     <header class="site-header">
         <div class="container">
@@ -160,6 +162,7 @@
                     <button class="tab-button active" data-tab="problem">Problem</button>
                     <button class="tab-button" data-tab="concept">Concept</button>
                     <button class="tab-button" data-tab="article">Article</button>
+                    <button class="tab-button" data-tab="profile">Profile</button>
                 </div>
 
                 <!-- Problem Form -->
@@ -189,7 +192,8 @@
 
                         <div class="form-group">
                             <label for="problem-description">Problem Description *</label>
-                            <textarea id="problem-description" name="description" required placeholder="Describe the problem clearly. What should the function do? What are the constraints?"></textarea>
+                            <textarea id="problem-description" name="description" required
+                                placeholder="Describe the problem clearly. What should the function do? What are the constraints?"></textarea>
                         </div>
 
                         <div class="form-group">
@@ -261,7 +265,8 @@ Explanation: Empty array returns 0"></textarea>
 
                         <div class="form-group">
                             <label for="concept-overview">Overview *</label>
-                            <textarea id="concept-overview" name="overview" required placeholder="Brief introduction to the concept. What is it and why is it important?"></textarea>
+                            <textarea id="concept-overview" name="overview" required
+                                placeholder="Brief introduction to the concept. What is it and why is it important?"></textarea>
                         </div>
 
                         <div class="form-group">
@@ -318,7 +323,7 @@ Python:
 
                         <div class="form-group">
                             <label for="article-content">Article Content *</label>
-                            
+
                             <!-- Markdown Toolbar -->
                             <div id="markdown-toolbar" class="markdown-toolbar">
                                 <button type="button" data-action="bold" title="Bold">**B**</button>
@@ -340,7 +345,7 @@ Python:
                                 <button type="button" data-action="strikethrough" title="Strikethrough">~~S~~</button>
                                 <button type="button" data-action="hr" title="Horizontal Rule">---</button>
                             </div>
-                            
+
                             <!-- Split Pane Editor -->
                             <div class="markdown-editor">
                                 <div class="editor-pane">
@@ -396,6 +401,49 @@ Or simple text:
                         </div>
                     </form>
                 </div>
+                <!-- Profile Form -->
+                <div id="profile-tab" class="tab-content">
+                    <form id="profile-form">
+                        <div class="form-group">
+                            <label for="profile-username">Username *</label>
+                            <input type="text" id="profile-username" name="username" required pattern="[a-z0-9-]+"
+                                title="Lowercase letters, numbers, and hyphens only">
+                            <div class="help-text">Unique URL identifier (e.g., john-doe). Lowercase letters, numbers,
+                                and hyphens only.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profile-name">Display Name *</label>
+                            <input type="text" id="profile-name" name="name" required>
+                            <div class="help-text">Your full name or public alias</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profile-tagline">Tagline (Optional)</label>
+                            <input type="text" id="profile-tagline" name="tagline"
+                                placeholder="Software Engineer | Tech Enthusiast">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profile-bio">Bio *</label>
+                            <textarea id="profile-bio" name="bio" required
+                                placeholder="Tell us about yourself..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profile-image">Profile Picture URL (Optional)</label>
+                            <input type="url" id="profile-image" name="image" placeholder="https://example.com/me.jpg">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profile-socials">Social Links (Optional)</label>
+                            <textarea id="profile-socials" name="socials" placeholder="One link per line:
+GitHub: https://github.com/username
+Twitter: https://twitter.com/username
+Portfolio: https://mysite.com"></textarea>
+                        </div>
+                    </form>
+                </div>
 
                 <div class="form-actions">
                     <button type="button" class="btn btn-primary" id="preview-btn">Preview</button>
@@ -414,11 +462,13 @@ Or simple text:
     <footer class="site-footer">
         <div class="container">
             <p>&copy; 2025 CodeProb. A static, community-driven platform hosted on GitHub Pages.</p>
-            <p><a href="/docs/contributing.html">Contribution Guidelines</a> | <a href="https://github.com/codeprob/codeprob">GitHub Repository</a></p>
+            <p><a href="/docs/contributing.html">Contribution Guidelines</a> | <a
+                    href="https://github.com/codeprob/codeprob">GitHub Repository</a></p>
         </div>
     </footer>
 
     <script src="assets/js/main.js"></script>
     <script src="assets/js/writer.js"></script>
 </body>
+
 </html>
