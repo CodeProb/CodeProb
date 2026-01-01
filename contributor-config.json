@@ -7,7 +7,10 @@
         "filename": "example-problem.html",
         "title": "Example Problem",
         "difficulty": "easy",
-        "topics": ["arrays", "loops"],
+        "topics": [
+          "arrays",
+          "loops"
+        ],
         "author": "CodeProb Team",
         "dateAdded": "2024-01-01"
       }
@@ -26,18 +29,52 @@
       {
         "filename": "article-welcome-to-codeprob.html",
         "title": "Welcome To CodeProb",
-        "tags": ["Tutorial", "Beginner","Welcome","CodeProb"],
+        "tags": [
+          "Tutorial",
+          "Beginner",
+          "Welcome",
+          "CodeProb"
+        ],
         "author": "Anshul Namdev",
         "dateAdded": "2025-12-31"
+      },
+      {
+        "filename": "article-how-to-codeprob.html",
+        "title": "How To CodeProb?",
+        "author": "Anshul Namdev",
+        "dateAdded": "2026-01-01",
+        "tags": [
+          "Starting Contributing CodeProb  Learning"
+        ]
       }
     ]
   },
   "instructions": {
     "adding_content": "To add new content, simply add an entry to the appropriate array above with the required metadata fields.",
     "required_fields": {
-      "problems": ["filename", "title", "difficulty", "topics", "author", "dateAdded"],
-      "concepts": ["filename", "title", "category", "complexity", "author", "dateAdded"],
-      "articles": ["filename", "title", "tags", "author", "dateAdded"]
+      "problems": [
+        "filename",
+        "title",
+        "difficulty",
+        "topics",
+        "author",
+        "dateAdded"
+      ],
+      "concepts": [
+        "filename",
+        "title",
+        "category",
+        "complexity",
+        "author",
+        "dateAdded"
+      ],
+      "articles": [
+        "filename",
+        "title",
+        "tags",
+        "author",
+        "dateAdded"
+      ]
     },
     "validation": "The content indexer will validate that files exist and metadata is complete before displaying content."
   }

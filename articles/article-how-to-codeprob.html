@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How To CodeProb? - CodeProb</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title"><a href="../index.html">CodeProb</a></h1>
+            <nav class="main-nav">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../problems/index.html" class="nav-link">Problems</a>
+                <a href="../concepts/index.html" class="nav-link">Concepts</a>
+                <a href="index.html" class="nav-link nav-link--active">Articles</a>
+                <a href="../writer.html" class="nav-link nav-link--writer">Write</a>
+            </nav>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container">
+            <article class="article" data-id="how-to-codeprob" data-author="anshul-namdev">
+                <header>
+                    <h1>How To CodeProb?</h1>
+                    <div class="metadata">
+                        <span class="author">Anshul Namdev</span>
+                        <span class="date">January 2, 2026</span>
+                        <span class="tags">Starting Contributing CodeProb  Learning</span>
+                    </div>
+                </header>
+                <section class="content">
+                    <h1>Getting Started with CodeProb</h1></p><p>You’ve seen what <a href="https://codeprob.github.io/">CodeProb</a> is all about, but now the question arises: <strong>How do you actually start CodeProbing?</strong></p><p>CodeProb is a place where programmers like you share insights on the latest trends, break down complex concepts, and challenge others with programming problems. Your contributions help those just starting out or looking to develop new skills.</p><p>Because CodeProb is built entirely on GitHub Pages (making it fast, free, and static), the process might seem a little different than usual web forms. But don't worry it's simpler than it looks. Let's walk through it together!</p><p>   </p><h2>1. Creating Your Profile</h2></p><p>To do anything on CodeProb like creating an Article, Concept, Problem, or <mark>Profile</mark> we use the <a href="https://codeprob.github.io/CodeProb/writer.html">Writer Interface</a>.</p><h3>Step 1: Generate your Profile HTML</h3>
+<ul><li>Open the <a href="https://codeprob.github.io/CodeProb/writer.html">Writer</a> and select the <strong>Profile</strong> tab.</li>
+<li>Fill in your details (Username, Display Name, Bio, etc.).</li>
+<p>   > <strong>Note</strong>: Choose your <code>username</code> carefully (e.g., <code>axshul</code>) as it will be part of your URL.</p>
+<li>Once satisfied with the preview, click <strong>Export HTML</strong>.</li>
+<li>An <code>index.html</code> file will automatically download to your system.</li></p><h3>Step 2: Fork and Upload</h3>
+<p>Now we need to get that file onto the internet.</p><p><li><strong>Fork</strong> the main <a href="https://github.com/CodeProb/CodeProb/">CodeProb Repository</a>.</li>
+<li>Inside your forked repo, open the <mark>profiles</mark> folder.</li>
+<li>Create a <strong>new folder</strong> that matches the <code>username</code> you entered in the Writer (e.g., <code>profiles/axshul/</code>).</li>
+<li>Upload the <code>index.html</code> file you downloaded into this new folder.</li></p><h3>Step 3: Registering Your Profile</h3>
+<p>There is one last crucial step to make your profile visible to the world: indexing it in the <strong>profiles.json</strong> file.</p><p><li>In the root of your repository, open the file named <code>profiles.json</code>.</li>
+<li>Locate the <code>&quot;profiles&quot;: [...]</code> list.</li>
+<li>You simply need to <strong>append</strong> your details to this list.</li></p><p>For example, if my username is <code>axshul</code>, I would add a new block like this:</p><pre><code class="language-javascript">{</p><p>    &quot;profiles&quot;: [</p><p>        {</p><p>            &quot;username&quot;: &quot;codeprob team&quot;,</p><p>            &quot;displayName&quot;: &quot;CodeProb Team&quot;,</p><p>            &quot;dateAdded&quot;: &quot;2026 01 01&quot;</p><p>        },</p><p>        {</p><p>            &quot;username&quot;: &quot;axshul&quot;,         // &lt;    Your new entry</p><p>            &quot;displayName&quot;: &quot;Anshul Namdev&quot;,</p><p>            &quot;dateAdded&quot;: &quot;2026 01 01&quot;</p><p>        }</p><p>    ]</p><p>}</p><p></code></pre><blockquote><strong>What to do</strong>: Pay attention to the syntax! Add a comma <code>,</code> after the previous item, then create a new object <code>{ }</code> containing your <code>username</code>, <code>displayName</code>, and <code>dateAdded</code>.</blockquote></p><h3>Step 4: Go Live! </h3>
+<p>Once you've added your folder and updated the JSON:</p><p><li><strong>Commit</strong> your changes.</li>
+<li>Create a <strong>Pull Request</strong> to the main <a href="https://github.com/CodeProb/CodeProb/">CodeProb Repository</a>.</li></p><p>We will validate your request and merge it. Shortly after (usually 2 5 minutes), your profile will be live at:</p><pre><code class="language-text">https://codeprob.github.io/CodeProb/profiles/&lt;your username&gt;</p><p></code></pre><p><strong>Voila! You are live!</strong>
+<p>The main advantage of creating a profile is attribution. When you write an Article, Concept, or Problem, simply use your <strong>Display Name</strong> as the author. The system will automatically link your name to your profile page, allowing readers to discover you and see all your contributions in one place!</p><p>   </p><h2>2. Writing Your First Article</h2></p><p>Got something to say? Whether it's a tutorial, an opinion piece, or a deep dive into a new tech stack, Articles are the way to go.</p><h3>Step 1: Write & Export</h3>
+<li>Head back to the <a href="https://codeprob.github.io/CodeProb/writer.html">Writer</a> and click the <strong>Article</strong> tab.</li>
+<li>Unleash your creativity! The editor supports full <strong>Markdown</strong>, so you can add code blocks, bold text, images, and links.</li>
+<li>Click <strong>Export HTML</strong> to get your file (e.g., <code>article my first post.html</code>).</li></p><h3>Step 2: Upload</h3>
+<li>In your forked repo, navigate to the <mark>articles</mark> folder.</li>
+<li>Upload your exported HTML file here.</li></p><h3>Step 3: Indexing</h3>
+<p>Just like the profile, we need to tell CodeProb about your new article. Open <code>contributor-config.json</code> in the root directory and find the <code>&quot;articles&quot;</code> array.</p><p>Add your entry:</p>
+<pre><code class="language-json">
+<p>// Inside &quot;description&quot;: { &quot;content&quot;: { &quot;articles&quot;: [ ...</p><p>{</p><p>    &quot;filename&quot;: &quot;article my first post.html&quot;,</p><p>    &quot;title&quot;: &quot;My Awesome First Article&quot;,</p><p>    &quot;tags&quot;: [&quot;Tutorial&quot;, &quot;Beginner&quot;, &quot;JavaScript&quot;],</p><p>    &quot;author&quot;: &quot;Anshul Namdev&quot;,</p><p>    &quot;dateAdded&quot;: &quot;2026 01 02&quot;</p><p>}</p><p></code></pre><p>   </p><h2>3. Adding a Concept</h2></p><p>CodeProb <strong>Concepts</strong> are wiki style explanations of programming terms (e.g., "Recursion", "Big O Notation", "Closures"). They should be educational and objective.</p><h3>Step 1: Define & Export</h3>
+<li>Select the <strong>Concept</strong> tab in the Writer.</li>
+<li>Fill in the <strong>Category</strong> (e.g., Algorithms) and <strong>Complexity</strong> (e.g., Beginner).</li>
+<li>Provide a clear <strong>Overview</strong> and <strong>Detailed Explanation</strong> with code examples.</li>
+<li>Click <strong>Export HTML</strong> to download your concept file.</li></p><h3>Step 2: Upload & Index</h3>
+<li>Upload the file to the <mark>concepts</mark> folder in your repo.</li>
+<li>Open <code>contributor-config.json</code> and add to the <code>&quot;concepts&quot;</code> array:</li></p><pre><code class="language-json">{</p><p>    &quot;filename&quot;: &quot;recursion explained.html&quot;,</p><p>    &quot;title&quot;: &quot;Understanding Recursion&quot;,</p><p>    &quot;category&quot;: &quot;algorithms&quot;,</p><p>    &quot;complexity&quot;: &quot;intermediate&quot;,</p><p>    &quot;author&quot;: &quot;Anshul Namdev&quot;,</p><p>    &quot;dateAdded&quot;: &quot;2026 01 02&quot;</p><p>}</p><p></code></pre><p>   </p><h2>4. Creating a Problem</h2></p><p>Challenge the community! Problems are the heart of CodeProb.</p><h3>Step 1: Create & Export</h3>
+<li>Select the <strong>Problem</strong> tab.</li>
+<li>Define the <strong>Difficulty</strong>, <strong>Topics</strong>, and provide a clear <strong>Description</strong>.</li>
+<li><strong>Crucial</strong>: Provide clear Input/Output examples so users know exactly what to build.</li>
+<li>Click <strong>Export HTML</strong>.</li></p><h3>Step 2: Upload & Index</h3>
+<li>Upload the file to the <mark>problems</mark> folder.</li>
+<li>Open <code>contributor-config.json</code> and add to the <code>&quot;problems&quot;</code> array:</li></ul></p><pre><code class="language-json">{</p><p>    &quot;filename&quot;: &quot;array sum problem.html&quot;,</p><p>    &quot;title&quot;: &quot;Sum of Array Elements&quot;,</p><p>    &quot;difficulty&quot;: &quot;easy&quot;,</p><p>    &quot;topics&quot;: [&quot;arrays&quot;, &quot;math&quot;],</p><p>    &quot;author&quot;: &quot;Anshul Namdev&quot;,</p><p>    &quot;dateAdded&quot;: &quot;2026 01 02&quot;</p><p>}</p><p></code></pre><p>   </p><h2>Final Step: Submit!</h2></p><p>Once you've uploaded your content files and updated the <code>contributor config.json</code>, simply <strong>Commit</strong> and <strong>Push</strong> your changes, then open a <strong>Pull Request</strong>.</p><p>Reviewers will check your submission, and once merged, your contribution will be part of the CodeProb learning ecosystem forever. <strong>Happy CodeProbing!</strong>
+                </section>
+                <section class="references">
+                    <h2>References and Further Reading</h2>
+                    <ul><li><a href="https://codeprob.github.io/CodeProb/writer">Writer</a></li><li><a href="https://codeprob.github.io/">CodeProb</a></li><li><a href="https://codeprob.github.io/CodeProb/profiles/axshul/">myProfile</a></li></ul>
+                </section>
+            </article>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 CodeProb. A static, community-driven platform hosted on GitHub Pages.</p>
+        </div>
+    </footer>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
