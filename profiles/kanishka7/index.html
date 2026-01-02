@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanishka Shrivastava - CodeProb Profile</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <style>
+        .profile-container { max-width: 800px; margin: 0 auto; }
+        .profile-header { display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border-color); }
+        .profile-avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; background: var(--bg-tertiary); }
+        .profile-info h1 { margin: 0 0 0.5rem 0; font-size: 2.5rem; }
+        .profile-tagline { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 1rem; }
+        .social-links { display: flex; gap: 1rem; }
+        .social-btn { padding: 0.5rem 1rem; background: var(--bg-secondary); border-radius: 4px; text-decoration: none; font-size: 0.9rem; border: 1px solid var(--border-color); }
+        .profile-section { margin-top: 3rem; }
+        .profile-section h2 { border-bottom: 2px solid var(--bg-secondary); padding-bottom: 0.5rem; }
+        .content-list { display: grid; gap: 1rem; }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title"><a href="../../index.html">CodeProb</a></h1>
+            <nav class="main-nav">
+                <a href="../../problems/index.html" class="nav-link">Problems</a>
+                <a href="../../concepts/index.html" class="nav-link">Concepts</a>
+                <a href="../../articles/index.html" class="nav-link">Articles</a>
+                <a href="../../writer.html" class="nav-link">Write</a>
+            </nav>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container profile-container" data-username="kanishka7" data-display-name="Kanishka Shrivastava">
+            <header class="profile-header">
+                <img src="../assets/images/default-profile.png" alt="Kanishka Shrivastava" class="profile-avatar" onerror="this.src='../../assets/images/default-profile.png'">
+                <div class="profile-info">
+                    <h1>Kanishka Shrivastava</h1>
+                    <div class="profile-tagline">Developer | Engineer</div>
+                    
+                </div>
+            </header>
+            
+            <section class="profile-bio">
+                <h2>About</h2>
+                <div class="bio-content"><p>I am a Computer Science Engineering student currently pursuing my B.Tech degree. With a strong foundation in Java programming and a keen interest in software development, I'm building technical expertise through academic projects and self-driven learning.</p><p>I'm continuously expanding my skillset and working on new projects to gain practical experience in software development. My goal is to combine technical knowledge with innovative thinking to create meaningful solutions.</p></div>
+            </section>
+            
+            <section class="profile-section">
+                <h2>Contributions</h2>
+                <div id="contributions-list" class="content-list">
+                    <p>Loading contributions...</p>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        // Profile-specific logic to load contributions
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('contributions-list');
+            const username = document.querySelector('.profile-container').dataset.username;
+            const displayName = document.querySelector('.profile-container').dataset.displayName;
+            
+            try {
+                // Fetch content config
+                const response = await fetch('../../contributor-config.json');
+                const config = await response.json();
+                
+                const allContent = [];
+                
+                // Helper to process items
+                const processItems = (items, type) => {
+                    items.forEach(item => {
+                        // Check fuzzy match on author name since we don't have linking IDs yet
+                        if (item.author.toLowerCase() === displayName.toLowerCase() || 
+                            item.author.toLowerCase() === username.toLowerCase()) {
+                            item.type = type;
+                            allContent.push(item);
+                        }
+                    });
+                };
+                
+                if (config.content.problems) processItems(config.content.problems, 'problems');
+                if (config.content.concepts) processItems(config.content.concepts, 'concepts');
+                if (config.content.articles) processItems(config.content.articles, 'articles');
+                
+                if (allContent.length === 0) {
+                    container.innerHTML = '<p>No contributions found yet.</p>';
+                    return;
+                }
+                
+                // Sort by new
+                allContent.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+                
+                container.innerHTML = allContent.map(item => `
+                    <div class="content-item">
+                        <span class="content-type-badge">${item.type.slice(0, -1)}</span>
+                        <h3><a href="../../${item.type}/${item.filename}">${item.title}</a></h3>
+                        <div class="content-metadata">
+                            <span>${item.dateAdded}</span>
+                        </div>
+                    </div>
+                `).join('');
+                
+            } catch (e) {
+                console.error(e);
+                container.innerHTML = '<p>Error loading contributions.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
