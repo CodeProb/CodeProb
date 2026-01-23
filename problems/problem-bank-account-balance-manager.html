@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Account Balance Manager - CodeProb</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title"><a href="../index.html">CodeProb</a></h1>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+                ☰
+            </button>
+            <nav class="main-nav">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="index.html" class="nav-link nav-link--active">Problems</a>
+                <a href="../concepts/index.html" class="nav-link">Concepts</a>
+                <a href="../articles/index.html" class="nav-link">Articles</a>
+                <a href="../writer.html" class="nav-link nav-link--writer">Write</a>
+            </nav>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container">
+            <article class="problem" data-id="bank-account-balance-manager" data-difficulty="medium">
+                <header>
+                    <h1>Bank Account Balance Manager</h1>
+                    <div class="metadata">
+                        <span class="difficulty">Medium</span>
+                        <span class="topics">oop, classes, methods, encapsulation</span>
+                    </div>
+                </header>
+                <section class="description">
+                    <h2>Problem Description</h2>
+                    <p>Design a Java class named BankAccount that represents a simple bank account.</p><p>The class should:</p><p>Store the account holder name</p><p>Store the account number</p><p>Store the current balance</p><p>Implement methods to:</p><p>Deposit a given amount</p><p>Withdraw a given amount</p><p>Retrieve the current balance</p><p>Withdrawal should only be allowed if the balance is sufficient.</p>
+                </section>
+                <section class="examples">
+                    <h2>Examples</h2>
+                    
+                        <div class="example">
+                            <h3>Example 1:</h3>
+                            <pre><code>Input:
+
+Initial Balance = 1000
+deposit(500)
+withdraw(300)
+
+
+Output:
+
+Balance after deposit: 1500
+Balance after withdrawal: 1200
+
+
+Explanation:
+Deposit adds to balance, withdrawal subtracts if sufficient funds exist.</code></pre>
+                        </div>
+                    
+                        <div class="example">
+                            <h3>Example 2:</h3>
+                            <pre><code>Input:
+
+Initial Balance = 500
+withdraw(800)
+
+
+Output:
+
+Withdrawal failed
+Balance remains: 500
+
+
+Explanation:
+Withdrawal not allowed due to insufficient balance.</code></pre>
+                        </div>
+                    
+                </section>
+                
+                <section class="related-links">
+    <h2>Related Content</h2>
+    <ul class="related-list">
+        <li>
+            <a href="https://docs.oracle.com/javase/tutorial/java/javaOO/classes.html" 
+               target="_blank" 
+               rel="noopener noreferrer">
+                Java Classes — Official Oracle Documentation
+            </a>
+            <p>Learn how Java classes and objects work with official examples.</p>
+        </li>
+
+        <li>
+            <a href="https://www.geeksforgeeks.org/java/encapsulation-in-java/" 
+               target="_blank" 
+               rel="noopener noreferrer">
+                Encapsulation in Java — GeeksforGeeks
+            </a>
+            <p>Understand data hiding and access modifiers with practical examples.</p>
+        </li>
+    </ul>
+</section>
+
+            </article>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 CodeProb. A static, community-driven platform hosted on GitHub Pages.</p>
+        </div>
+    </footer>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
